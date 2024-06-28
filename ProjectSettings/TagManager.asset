@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Toy
+  - Chicken
+  - Kitty
+  - Dog
+  - Deer
+  - Horse
+  - Tiger
+  - Pinguin
   layers:
   - Default
   - TransparentFX

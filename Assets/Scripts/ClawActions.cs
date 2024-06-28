@@ -17,24 +17,17 @@ public class ClawActions : MonoBehaviour
 
     [Header("Movement")]
 
+    [SerializeField] private PrizeManager prizeMan = null;
+
     float horizontalInput;
     float verticalInput;
 
     [Header("Clawing")]
     bool clawInProgress;
 
-
-
-
-
-
     [SerializeField] private Animator AnimA = null;
     [SerializeField] private Animator AnimB = null;
     [SerializeField] private Animator AnimC = null;
-
-
-
-
 
     // Start is called before the first frame update
 
@@ -43,12 +36,12 @@ public class ClawActions : MonoBehaviour
     {
 
         MyInput();
-        if (!clawInProgress)
+        if (!clawInProgress && !prizeMan.examine)
         {
             MoveClaws();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !clawInProgress)
+        if (Input.GetKeyDown(KeyCode.Space) && !clawInProgress && !prizeMan.examine)
         {
             ClawStart();
 
@@ -57,7 +50,7 @@ public class ClawActions : MonoBehaviour
         if (clawCore.transform.position.y < 5f)
         {
             Debug.Log("Claw at 4.5");
-            Debug.Log(clawCore.transform.position.y);
+
             clawHands();
         }
 
