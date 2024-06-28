@@ -17,10 +17,16 @@ public class PrizeManager : MonoBehaviour
     public bool examine = false;
     [SerializeField] private GameObject examiningObject;
 
+    [Header("UI")]
+    [SerializeField] private GameObject menu = null;
+    [SerializeField] private GameObject backMenu = null;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        vcamIntro.m_Priority = 1;
+        Time.timeScale = 0;
+
 
     }
 
@@ -40,8 +46,6 @@ public class PrizeManager : MonoBehaviour
         }
         if (ToBeShown.Count != 0 && examine && Input.GetMouseButtonDown(0))
         {
-            //Showed.Add(examiningObject);
-            //ToBeShown = ToBeShown.Distinct().ToList();
             if (ToBeShown[0] != null)
             {
                 if (examiningObject != ToBeShown[0])
@@ -168,6 +172,32 @@ public class PrizeManager : MonoBehaviour
 
 
 
+    }
+
+    public void StartGame()
+    {
+        Time.timeScale = 1;
+        vcamIntro.m_Priority = 1;
+        menu.SetActive(false);
+        backMenu.SetActive(true);
+
+    }
+
+    public void ShowMenu()
+    {
+        Time.timeScale = 0;
+        menu.SetActive(true);
+        backMenu.SetActive(false);
+
+    }
+
+    public void ShoppingMenu()
+    {
+
+
+
+
+        menu.SetActive(false);
     }
 
     public void LeaveGame()

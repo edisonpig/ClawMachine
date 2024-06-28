@@ -16,6 +16,12 @@ public class ClawActions : MonoBehaviour
     [SerializeField] private GameObject clawC = null; //claw3 rotate x -ve & y +ve
 
     [Header("Movement")]
+    bool moveLeft = false;
+    bool moveRight = false;
+    bool moveUp = false;
+    bool moveDown = false;
+
+
 
     [SerializeField] private PrizeManager prizeMan = null;
 
@@ -38,6 +44,27 @@ public class ClawActions : MonoBehaviour
         MyInput();
         if (!clawInProgress && !prizeMan.examine)
         {
+            if (moveDown)
+            {
+                clawPipes.transform.position = Vector3.MoveTowards(clawPipes.transform.position, new Vector3(clawPipes.transform.position.x, clawPipes.transform.position.y, clawPipes.transform.position.z + -1 * -2f), Time.deltaTime);
+
+            }
+            if (moveUp)
+            {
+                clawPipes.transform.position = Vector3.MoveTowards(clawPipes.transform.position, new Vector3(clawPipes.transform.position.x, clawPipes.transform.position.y, clawPipes.transform.position.z + 1 * -2f), Time.deltaTime);
+
+            }
+            if (moveRight)
+            {
+                clawBox.transform.position = Vector3.MoveTowards(clawBox.transform.position, new Vector3(clawBox.transform.position.x + 1 * -2f, clawBox.transform.position.y, clawBox.transform.position.z), Time.deltaTime);
+
+            }
+            if (moveLeft)
+            {
+                clawBox.transform.position = Vector3.MoveTowards(clawBox.transform.position, new Vector3(clawBox.transform.position.x + 1 * 2f, clawBox.transform.position.y, clawBox.transform.position.z), Time.deltaTime);
+
+            }
+
             MoveClaws();
         }
 
@@ -116,14 +143,57 @@ public class ClawActions : MonoBehaviour
 
     }
 
-    public void RightButton()
+    public void RightButtonDown()
     {
-        horizontalInput = 1;
+        Debug.Log("right down");
+        moveRight = true;
+    }
+    public void RightButtonUp()
+    {
+        Debug.Log("right up");
+        moveRight = false;
     }
 
-    public void LeftButton()
+    public void LeftButtonDown()
     {
-        verticalInput = 1;
+        Debug.Log("leftdown");
+        moveLeft = true;
+    }
+    public void LeftButtonUp()
+    {
+        Debug.Log("leftup");
+        moveLeft = false;
+    }
+
+    public void FarButtonDown()
+    {
+        Debug.Log("far down");
+        moveUp = true;
+    }
+    public void FarButtonUp()
+    {
+        Debug.Log("far up");
+        moveUp = false;
+    }
+
+    public void NearButtonDown()
+    {
+        Debug.Log("near down");
+        moveDown = true;
+
+    }
+    public void NearButtonUp()
+    {
+        Debug.Log("near up");
+        moveDown = false;
+
+    }
+
+    public void ClawGo()
+    {
+        if (!clawInProgress && !prizeMan.examine)
+            ClawStart();
+
     }
 
 
