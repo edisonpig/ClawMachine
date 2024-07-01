@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using System.Linq;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class PrizeManager : MonoBehaviour
 {
     [Header("VCam")]
@@ -15,7 +17,12 @@ public class PrizeManager : MonoBehaviour
     [SerializeField] public List<GameObject> Showed;
     public GameObject offset;
     public bool examine = false;
+
+    public int coinGot = 0;
+    [SerializeField] private Text coinsText;
     [SerializeField] private GameObject examiningObject;
+
+
 
     [Header("UI")]
     [SerializeField] private GameObject menu = null;
@@ -26,6 +33,7 @@ public class PrizeManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 0;
+
 
 
     }
@@ -168,6 +176,9 @@ public class PrizeManager : MonoBehaviour
 
             }
         }
+        coinGot += 100;
+        PlayerPrefs.SetInt("Coins", coinGot);
+        coinsText.text = "Coins: " + PlayerPrefs.GetInt("Coins");
 
 
 
@@ -180,6 +191,9 @@ public class PrizeManager : MonoBehaviour
         vcamIntro.m_Priority = 1;
         menu.SetActive(false);
         backMenu.SetActive(true);
+        coinsText.text = "Coins: " + PlayerPrefs.GetInt("Coins");
+        coinGot = PlayerPrefs.GetInt("Coins");
+
 
     }
 
@@ -191,14 +205,8 @@ public class PrizeManager : MonoBehaviour
 
     }
 
-    public void ShoppingMenu()
-    {
+    public void ShoppingMenu() => SceneManager.LoadScene("ShopScene");
 
-
-
-
-        menu.SetActive(false);
-    }
 
     public void LeaveGame()
     {
