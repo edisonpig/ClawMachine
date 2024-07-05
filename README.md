@@ -1,5 +1,6 @@
-<h1 Color =red>Welcome To my Project, Claw Machine Craze! </h1>
-[螢幕擷取畫面 2024-07-02 000146](https://github.com/edisonpig/ClawMachine/assets/78160913/e417a85b-3a07-4472-a650-07d779052a9c)
+<h1 >Welcome To my Project, Claw Machine Craze! </h1>
+![螢幕擷取畫面 2024-07-02 000146](https://github.com/edisonpig/ClawMachine/assets/78160913/5a4c3dfa-63e4-4343-bf1e-1ac085ed07a0)
+
 
 This is a Unity Project I made using Unity, along with CineMachine and other elements for a simple claw machine game. <br><br><br>
 The game has both pc and mobile enabled. <br><br><br>
